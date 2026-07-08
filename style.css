@@ -7,12 +7,11 @@
     body {
   font-family: 'DreamerTM', sans-serif;
   font-size: 70px;
-  min-height: 220vh;
   background-color: #3b2a1a;
   background-image: url('End_Portal.webp'), url('woah_dirt.png');
   background-repeat: no-repeat, repeat;
-  background-position: center -50vh, 0 -50vh;
-  background-attachment: scroll, scroll;
+  background-position: center, 0 0;
+  background-attachment: fixed, fixed;
   background-size: 530px auto, 700px 700px;
   color: #f1aae2; 
 }
