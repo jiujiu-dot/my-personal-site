@@ -28,7 +28,7 @@ header h1 {
   color: transparent;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 3px #ff80bf;
-  text-stroke: 3px #ff80bf;
+  text-shadow: 3px #ff80bf;
   text-shadow: 0 0 1px #06103a;
   font-size: 4rem;
   letter-spacing: 0.05em;
