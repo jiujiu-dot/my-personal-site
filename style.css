@@ -24,16 +24,6 @@ header {
   margin-top: 80px;
 }
 
-header h1 {
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 3px #ff80bf;
-  text-shadow: 3px #ff80bf;
-  text-shadow: 0 0 1px #06103a;
-  font-size: 4rem;
-  letter-spacing: 0.05em;
-}
-
 .AboutMe {
   font-size: 10px;
   line-height: 1.5;
@@ -44,24 +34,15 @@ header h1 {
 
 .pigeon-name {
   position: absolute;
-  top: 300px;
+  top: 295px;
   left: calc(50%);
   transform: translateX(-50%);
-  display: inline-block;
-  padding: 1.3rem 4.2rem;
-  border-radius: 12px;
-  background-color: #f3dfcd;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 78px;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
-}
-
-.pigeon-text {
-  display: inline-block;
-  transform: translateY(-5px);
 }
 
 @font-face {
