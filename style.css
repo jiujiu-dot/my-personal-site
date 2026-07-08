@@ -55,10 +55,12 @@ header {
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
-}.pigeon-name span {
-  position: relative;
-  top: -5px;
+}
+.pigeon-name img {
   display: inline-block;
+  vertical-align: middle;
+  height: 78px;
+  width: auto;
 }
 @font-face {
   font-family: 'DreamerTM';
