@@ -9,6 +9,7 @@ body {
   background-color: #3b2a1a; 
   background-image: url('dirt.png');
   background-repeat: repeat;
+  background-size: 32px 32px;
   color: #fff;
 }
 
