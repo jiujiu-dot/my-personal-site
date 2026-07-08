@@ -30,9 +30,9 @@ header h1 {
   color: #07123f;
   -webkit-text-stroke: 4px #f3dfcd;
   -webkit-text-fill-color: #07123f;
-  text-stroke: 4px #f3dfcd;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-shadow: 0 0 0 #07123f, 0 0 1px #f3dfcd, 0 0 2px #f3dfcd, 0 0 3px #f3dfcd;
 }
 
 .AboutMe {
