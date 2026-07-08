@@ -5,7 +5,6 @@
 }
 
     body {
-  position: relative;
   font-family: 'DreamerTM', sans-serif;
   font-size: 70px;
   background-color: #3b2a1a;
@@ -17,30 +16,7 @@
   color: #f1aae2; 
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 530px;
-  height: 530px;
-  transform: translate(-50%, -50%);
-  border: 10px solid #f3dfcd;
-  box-sizing: border-box;
-  background-image: url('End_Portal.webp');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  pointer-events: none;
-  z-index: 0;
-}
 
-header,
-.AboutMe,
-.pigeon-name {
-  position: relative;
-  z-index: 1;
-}
 
 header {
   padding: 2rem;
@@ -71,6 +47,11 @@ header {
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
+}
+
+.pigeon-text {
+  display: inline-block;
+  transform: translateY(-5px);
 }
 
 @font-face {
