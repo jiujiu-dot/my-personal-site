@@ -6,6 +6,7 @@
 
 body {
   font-family: sans-serif;
+  background-color: #3b2a1a; 
   background-image: url('dirt.png');
   background-repeat: repeat;
   color: #fff;
