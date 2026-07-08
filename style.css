@@ -24,13 +24,17 @@ header {
   margin-top: 80px;
 }
 
-header h1 {
-  font-family: 'DreamerTM', sans-serif;
-  font-size: 5rem;
-  color: #000;
-  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
-  margin: 0;
+.about-me-title {
   display: inline-block;
+  margin: 0 auto;
+  padding: 0.75rem 1.2rem;
+  background-color: #f3dfcd;
+  color: #000;
+  font-family: 'DreamerTM', sans-serif;
+  font-size: 70px;
+  line-height: 1;
+  border-radius: 14px;
+  box-shadow: 0 6px 0 #d9c0a6;
 }
 
 .AboutMe {
