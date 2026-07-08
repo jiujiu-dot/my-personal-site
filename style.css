@@ -3,3 +3,9 @@ body {
   margin: 0;
   padding: 2rem;
 }
+
+body {
+  margin: 0;
+  background-image: url('dirt.png');
+  background-repeat: repeat;
+}
