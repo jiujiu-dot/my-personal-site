@@ -1,11 +1,23 @@
-body {
-  font-family: sans-serif;
+* {
   margin: 0;
-  padding: 2rem;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background-image: url('dirt.png');
+  font-family: sans-serif;
+  background-image: url('dirt-tile.png');
   background-repeat: repeat;
+  color: #fff;
+}
+
+header {
+  padding: 2rem;
+  text-align: center;
+}
+
+section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
