@@ -25,3 +25,9 @@ header {
   top: 300px;
   left: 600px;
 }
+
+@font-face {
+  font-family: 'DreamerTM';
+  src: url('DreamerTM-Regular.woff2') format('woff2'),
+       url('DreamerTM-Regular.ttf') format('truetype');
+}
