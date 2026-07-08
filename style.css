@@ -6,7 +6,7 @@
 
     body {
   font-family: 'DreamerTM', sans-serif;
-  font-size: 85px;
+  font-size: 70px;
   background-color: #3b2a1a;
   background-image: url('End_Portal.webp'), url('dirt.png');
   background-repeat: no-repeat, repeat;
@@ -21,6 +21,7 @@
 header {
   padding: 2rem;
   text-align: center;
+  margin-top: 80px;
 }
 
 .AboutMe {
@@ -33,7 +34,7 @@ header {
 
 .pigeon-name {
   position: absolute;
-  top: 130px;
+  top: 230px;
   left: calc(50% + 5px);
   transform: translateX(-50%);
 }
