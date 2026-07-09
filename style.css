@@ -31,11 +31,11 @@ body {
 }
 
 .scroll-frame-image {
-  position: absolute;
+  position: fixed;
   left: 50%;
-  bottom: 1000px;
+  bottom: 3000px;
   transform: translateX(-50%);
-  width: 320px;
+  width: 900px;
   max-width: 80vw;
   height: auto;
   opacity: 1;
