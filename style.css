@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  min-height: 320vh;
+  min-height: 12000px;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
