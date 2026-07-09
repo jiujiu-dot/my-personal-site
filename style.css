@@ -24,6 +24,16 @@ header {
   margin-top: 120px;
 }
 
+.info-bar-image {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 180px;
+  max-width: calc(100% - 2rem);
+  height: auto;
+  z-index: 10;
+}
+
 .about-me-image {
   display: inline-block;
   max-width: 100%;
