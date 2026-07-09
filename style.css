@@ -27,7 +27,7 @@ header {
 .info-bar-image {
   position: absolute;
   top: 2rem;
-  right: 1rem;
+  right: 5rem;
   width: 400px;
   max-width: calc(100% - 2rem);
   height: auto;
