@@ -47,11 +47,27 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   z-index: 2; 
   pointer-events: none;
+}
+
+
+.frame1 .frame-extra.left {
+  transform: translate(calc(-50% - 40px), -50%);
+}
+.frame1 .frame-extra.right {
+  transform: translate(calc(-50% + 40px), -50%);
+}
+
+
+.frame1 .frame-extra.left.down {
+  transform: translate(calc(-50% - 40px), calc(-50% + 50px));
+}
+.frame1 .frame-extra.right.down {
+  transform: translate(calc(-50% + 40px), calc(-50% + 50px));
 }
 
 .portal-layer {
