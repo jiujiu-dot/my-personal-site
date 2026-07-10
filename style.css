@@ -31,33 +31,27 @@ body {
   height: 100vh;
   width: 100%;
   background-image: url('frame1.png');
-  background-size: 100px 100px; 
+  background-size: auto; /* keep original image size */
   background-position: center;
   background-repeat: no-repeat;
 }
 .frame1 {
-  position: relative; /* allow absolute overlays */
+  position: relative; /* allow absolutely positioned overlays */
 }
 
-.frame1-overlays {
+.frame-overlay {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.frame1 .overlay {
-  position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  z-index: 2;
   pointer-events: none;
+  z-index: 101; /* above the background but below header */
 }
 
-.overlay-01 { left: 50%; top: 40%; transform: translate(-150%, -50%); }
-.overlay-02 { left: 50%; top: 40%; transform: translate(50%, -50%); }
-.overlay-03 { left: 50%; top: 60%; transform: translate(-150%, -50%); }
-.overlay-04 { left: 50%; top: 60%; transform: translate(50%, -50%); }
+.frame1 .overlay-1 { left: 50%; top: 50%; transform: translate(-50%, -50%) translate(-40px, -40px); }
+.frame1 .overlay-2 { left: 50%; top: 50%; transform: translate(-50%, -50%) translate(40px, -40px); }
+.frame1 .overlay-3 { left: 50%; top: 50%; transform: translate(-50%, -50%) translate(-40px, 40px); }
+.frame1 .overlay-4 { left: 50%; top: 50%; transform: translate(-50%, -50%) translate(40px, 40px); }
 
 .portal-layer {
   position: absolute;
