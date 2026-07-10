@@ -9,10 +9,7 @@ html {
 }
 
 body {
-  min-height: 12000px;
   overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
   font-family: 'DreamerTM', sans-serif;
   font-size: 70px;
   background-color: #3b2a1a;
@@ -21,30 +18,26 @@ body {
   background-position: 0 0;
   background-attachment: fixed;
   background-size: auto 900px;
-  color: #f1aae2; 
+  color: #f1aae2;
 }
 
-.scroll-frame-section {
+.landing {
   position: relative;
-  height: 12000px;
+  height: 100vh;
   width: 100%;
 }
 
-.scroll-frame-image {
-  position: fixed;
-  left: 50%;
-  bottom: 3000px;
-  transform: translateX(-50%);
-  width: 900px;
-  max-width: 80vw;
-  height: auto;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 1002;
+.frame1 {
+  height: 100vh;
+  width: 100%;
+  background-image: url('frame1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .portal-layer {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image: url('End_Portal.webp');
   background-repeat: no-repeat;
@@ -56,37 +49,35 @@ body {
 }
 
 header {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
+  height: auto;
   padding: 0;
   margin: 0;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 3;
 }
 
 .about-me-image {
-  position: fixed;
+  position: absolute;
   top: calc(2rem + 70px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.08));
-  z-index: 1001;
-  display: inline-block;
-  max-width: 100%;
+  z-index: 3;
   height: 110px;
   width: auto;
-  margin-top: 0;
 }
 
 .info-bar-image {
-  position: fixed;
+  position: absolute;
   top: -49.5px;
   right: 0.5rem;
   width: 400px;
   max-width: 25vw;
   height: auto;
-  z-index: 1001;
+  z-index: 3;
   transform: none;
 }
 
@@ -99,20 +90,12 @@ header {
 }
 
 .pigeon-name {
-  position: fixed;
+  position: absolute;
   top: calc(8rem + 70px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.1));
-  z-index: 1001;
+  z-index: 3;
   display: inline-block;
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: normal;
   white-space: nowrap;
 }
 .pigeon-name img {
