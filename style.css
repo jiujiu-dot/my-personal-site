@@ -68,7 +68,7 @@ header {
 
 .about-me-image {
   position: fixed;
-  top: 2rem;
+  top: calc(2rem + 70px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.08));
   z-index: 1001;
@@ -100,7 +100,7 @@ header {
 
 .pigeon-name {
   position: fixed;
-  top: 8rem;
+  top: calc(8rem + 70px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.1));
   z-index: 1001;
@@ -120,9 +120,4 @@ header {
   vertical-align: middle;
   height: 140px;
   width: auto;
-}
-@font-face {
-  font-family: 'DreamerTM';
-  src: url('DreamerTM-Regular.woff2') format('woff2'),
-       url('DreamerTM-Regular.ttf') format('truetype');
 }
