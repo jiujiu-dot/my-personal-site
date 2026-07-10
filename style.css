@@ -31,10 +31,33 @@ body {
   height: 100vh;
   width: 100%;
   background-image: url('frame1.png');
-  background-size: cover;
+  background-size: 100px 100px; 
   background-position: center;
   background-repeat: no-repeat;
 }
+.frame1 {
+  position: relative; /* allow absolute overlays */
+}
+
+.frame1-overlays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.frame1 .overlay {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.overlay-01 { left: 50%; top: 40%; transform: translate(-150%, -50%); }
+.overlay-02 { left: 50%; top: 40%; transform: translate(50%, -50%); }
+.overlay-03 { left: 50%; top: 60%; transform: translate(-150%, -50%); }
+.overlay-04 { left: 50%; top: 60%; transform: translate(50%, -50%); }
 
 .portal-layer {
   position: absolute;
