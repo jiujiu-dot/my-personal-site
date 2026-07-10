@@ -36,7 +36,6 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Center additional images on top of the frame1 background */
 .frame1 .frame-images {
   position: relative;
   height: 100%;
@@ -51,7 +50,7 @@ body {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  z-index: 2; /* sits above the background but below header */
+  z-index: 2; 
   pointer-events: none;
 }
 
