@@ -75,6 +75,16 @@ body {
   top: calc(60% - 30px);
 }
 
+.frame1 .frame-extra.two {
+  left: calc(50% + 15px);
+  top: calc(40% + 10px);
+}
+
+.frame1 .frame-extra.four {
+  left: calc(50% + 15px);
+  top: calc(60% - 30px);
+}
+
 
 .portal-layer {
   position: absolute;
