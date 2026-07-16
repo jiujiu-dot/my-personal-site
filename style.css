@@ -52,19 +52,27 @@ body {
 }
 
 .frame1 .frame-extra.left {
-  left: calc(50% - 100px);
+  left: calc(50% - 75px);
 }
 
 .frame1 .frame-extra.right {
-  left: calc(50% + 40px);
+  left: calc(50% + 80px);
 }
 
 .frame1 .frame-extra:not(.down) {
-  top: 38%;
+  top: 40%;
 }
 
 .frame1 .frame-extra.down {
-  top: 62%;
+  top: 60%;
+}
+
+.frame1 .frame-extra.one {
+  top: calc(40% + 10px);
+}
+
+.frame1 .frame-extra.three {
+  top: calc(60% - 30px);
 }
 
 
