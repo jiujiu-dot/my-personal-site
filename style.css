@@ -54,15 +54,15 @@ body {
 }
 
 .frame1 .frame-extra.left {
-  left: calc(50% - 240px);
+  left: calc(50% - 80px);
 }
 
 .frame1 .frame-extra.right {
-  left: calc(50% + 170px);
+  left: calc(50% + 30px);
 }
 
 .frame1 .frame-extra.down {
-  top: 62%;
+  top: 60%;
 }
 
 
