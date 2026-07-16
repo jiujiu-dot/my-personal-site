@@ -44,25 +44,27 @@ body {
 
 .frame1 .frame-extra {
   position: absolute;
-  top: 45%;
   width: 70px;
   height: 70px;
   object-fit: contain;
   z-index: 2;
   pointer-events: none;
-  transform: translateY(-50%);
 }
 
 .frame1 .frame-extra.left {
-  left: calc(50% - 80px);
+  left: calc(50% - 100px);
 }
 
 .frame1 .frame-extra.right {
-  left: calc(50% + 30px);
+  left: calc(50% + 40px);
+}
+
+.frame1 .frame-extra:not(.down) {
+  top: 38%;
 }
 
 .frame1 .frame-extra.down {
-  top: 60%;
+  top: 62%;
 }
 
 
