@@ -41,6 +41,18 @@ if (dropAudio) {
   }, { once: true });
 }
 
+const resetMusicImagePosition = () => {
+  if (!musicImage) return;
+
+  musicImage.classList.remove('is-hidden');
+  musicImage.classList.remove('dragging');
+  musicImage.style.left = '';
+  musicImage.style.top = '';
+  musicImage.style.transform = '';
+  document.body.style.userSelect = '';
+  dragState = null;
+};
+
 const playDropAudio = () => {
   if (!dropAudio) return;
 
@@ -51,6 +63,7 @@ const playDropAudio = () => {
     if (dropAudio.currentTime >= endTime) {
       dropAudio.pause();
       dropAudio.currentTime = startTime;
+      resetMusicImagePosition();
     }
   };
 
