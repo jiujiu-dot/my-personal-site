@@ -134,9 +134,7 @@ header {
 .bottom-image {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(92vw, 950px);
+  transform: translateX(-50%);
   height: auto;
   display: block;
   object-fit: contain;
@@ -146,7 +144,23 @@ header {
   display: none;
 }
 
+.layout-image {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 950px);
+  z-index: 1;
+}
+
+.musicbox-image {
+  top: 40%;
+  width: min(70vw, 700px);
+  z-index: 2;
+}
+
 .music-image {
+  top: 62%;
+  width: min(70vw, 700px);
+  z-index: 3;
   cursor: grab;
 }
 
