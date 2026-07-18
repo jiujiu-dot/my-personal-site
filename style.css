@@ -106,7 +106,7 @@ header {
   width: auto;
 }
 
-/* Frame section */
+
 .frame1 {
   position: relative;
   height: 100vh;
@@ -124,21 +124,38 @@ header {
 }
 
 .bottom-gallery {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
   padding: 3rem 2rem;
+  scroll-margin-top: 2rem;
 }
 
 .bottom-image {
-  width: min(80vw, 700px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 950px);
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+.bottom-image.is-hidden {
+  display: none;
+}
+
+.layout-image {
+  z-index: 1;
+}
+
+.musicbox-image {
+  z-index: 2;
+}
+
+.music-image {
+  z-index: 3;
 }
 
 .frame1 .frame-images {
@@ -166,6 +183,11 @@ header {
   object-fit: contain;
   z-index: 2;
   pointer-events: none;
+}
+
+.frame1 .frame-extra[data-target-image] {
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .frame1 .frame-extra.left {
