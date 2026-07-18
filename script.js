@@ -44,19 +44,31 @@ if (dropAudio) {
 const playDropAudio = () => {
   if (!dropAudio) return;
 
+  const startTime = 9;
+  const endTime = 40;
+
+  const stopAtEnd = () => {
+    if (dropAudio.currentTime >= endTime) {
+      dropAudio.pause();
+      dropAudio.currentTime = startTime;
+    }
+  };
+
   if (!audioReady && dropAudio.readyState < 2) {
     dropAudio.addEventListener('canplaythrough', () => {
-      dropAudio.currentTime = 0;
+      dropAudio.currentTime = startTime;
       dropAudio.play().catch(() => {});
+      dropAudio.addEventListener('timeupdate', stopAtEnd, { once: false });
     }, { once: true });
     return;
   }
 
-  dropAudio.currentTime = 0;
+  dropAudio.currentTime = startTime;
   dropAudio.play().catch(() => {
     dropAudio.load();
     setTimeout(() => dropAudio.play().catch(() => {}), 150);
   });
+  dropAudio.addEventListener('timeupdate', stopAtEnd, { once: false });
 };
 
 if (musicImage) {
