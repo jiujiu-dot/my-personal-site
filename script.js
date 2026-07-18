@@ -29,7 +29,35 @@ document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
 });
 
 const musicImage = document.querySelector('.music-image');
+const dropAudio = document.getElementById('drop-audio');
 let dragState = null;
+let audioReady = false;
+
+if (dropAudio) {
+  dropAudio.src = 'Mitski%20-%20Washing%20Machine%20Heart%20%5B1%5D.mp3';
+  dropAudio.load();
+  dropAudio.addEventListener('canplaythrough', () => {
+    audioReady = true;
+  }, { once: true });
+}
+
+const playDropAudio = () => {
+  if (!dropAudio) return;
+
+  if (!audioReady && dropAudio.readyState < 2) {
+    dropAudio.addEventListener('canplaythrough', () => {
+      dropAudio.currentTime = 0;
+      dropAudio.play().catch(() => {});
+    }, { once: true });
+    return;
+  }
+
+  dropAudio.currentTime = 0;
+  dropAudio.play().catch(() => {
+    dropAudio.load();
+    setTimeout(() => dropAudio.play().catch(() => {}), 150);
+  });
+};
 
 if (musicImage) {
   musicImage.addEventListener('mousedown', (event) => {
@@ -59,6 +87,26 @@ if (musicImage) {
 
   window.addEventListener('mouseup', () => {
     if (!dragState) return;
+    const musicBoxImage = document.querySelector('.musicbox-image');
+    if (musicBoxImage && !musicBoxImage.classList.contains('is-hidden')) {
+      const musicRect = musicImage.getBoundingClientRect();
+      const boxRect = musicBoxImage.getBoundingClientRect();
+      const intersects =
+        musicRect.left < boxRect.right &&
+        musicRect.right > boxRect.left &&
+        musicRect.top < boxRect.bottom &&
+        musicRect.bottom > boxRect.top;
+
+      if (intersects) {
+        musicImage.classList.add('is-hidden');
+        playDropAudio();
+        dragState = null;
+        musicImage.classList.remove('dragging');
+        document.body.style.userSelect = '';
+        return;
+      }
+    }
+
     dragState = null;
     musicImage.classList.remove('dragging');
     document.body.style.userSelect = '';
