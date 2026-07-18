@@ -40,7 +40,7 @@ main {
 /* Landing section */
 .landing {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
 }
 
@@ -109,7 +109,7 @@ header {
 /* Frame section */
 .frame1 {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background-image: url('frame1.png');
   background-size: 900px 500px;
@@ -119,7 +119,7 @@ header {
 
 .extra-space {
   width: 100%;
-  min-height: 140vh;
+  height: 120vh;
   background: transparent;
 }
 
