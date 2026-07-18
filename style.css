@@ -40,7 +40,7 @@ main {
 /* Landing section */
 .landing {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -109,12 +109,18 @@ header {
 /* Frame section */
 .frame1 {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-image: url('frame1.png');
   background-size: 900px 500px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.extra-space {
+  width: 100%;
+  min-height: 140vh;
+  background: transparent;
 }
 
 .frame1 .frame-images {
@@ -125,11 +131,11 @@ header {
 
 .frame1 .text1-image {
   position: absolute;
-  top: calc(50% - 100px);
+  top: calc(50% - 120px);
   left: 50%;
   transform: translate(-50%, -50%);
-  width: var(--text1-width);
-  height: var(--text1-height);
+  width: 550px;
+  height: 310px;
   object-fit: contain;
   z-index: 1;
   pointer-events: none;
