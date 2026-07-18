@@ -70,7 +70,7 @@ header {
 
 .about-me-image {
   position: absolute;
-  top: calc(2rem + 70px);
+  top: calc(2rem + 70px + 50px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.08));
   z-index: 3;
@@ -91,7 +91,7 @@ header {
 
 .pigeon-name {
   position: absolute;
-  top: calc(8rem + 70px);
+  top: calc(8rem + 70px + 50px);
   left: 50%;
   transform: translateX(-50%) translateY(calc(var(--scroll-y, 0px) * -0.1));
   z-index: 3;
@@ -217,18 +217,22 @@ header {
 
 .frame1 .frame-extra.one {
   top: calc(40% + 10px);
+  transform: translateY(30px);
 }
 
 .frame1 .frame-extra.three {
   top: calc(60% - 30px);
+  transform: translateY(-30px);
 }
 
 .frame1 .frame-extra.two {
   left: calc(50% + 15px);
   top: calc(40% + 10px);
+  transform: translateY(30px);
 }
 
 .frame1 .frame-extra.four {
   left: calc(50% + 15px);
   top: calc(60% - 30px);
+  transform: translateY(-30px);
 }
