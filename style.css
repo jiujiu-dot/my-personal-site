@@ -131,6 +131,10 @@ header {
   scroll-margin-top: 2rem;
 }
 
+.bottom-gallery.is-hidden {
+  display: none;
+}
+
 .bottom-image {
   position: absolute;
   left: 50%;

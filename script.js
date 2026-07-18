@@ -23,6 +23,11 @@ const swapBottomImage = (imageName) => {
 document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
   tile.addEventListener('click', () => {
     const gallery = document.querySelector('.bottom-gallery');
+
+    if (tile.classList.contains('one')) {
+      gallery?.classList.remove('is-hidden');
+    }
+
     swapBottomImage(tile.dataset.targetImage);
     gallery?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
