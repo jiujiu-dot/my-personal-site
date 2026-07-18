@@ -146,16 +146,25 @@ header {
   display: none;
 }
 
+.music-image {
+  cursor: grab;
+}
+
+.music-image.dragging {
+  cursor: grabbing;
+  z-index: 10;
+}
+
 .layout-image {
   z-index: 1;
 }
 
 .musicbox-image {
-  z-index: 2;
+  z-index: 3;
 }
 
 .music-image {
-  z-index: 3;
+  z-index: 2;
 }
 
 .frame1 .frame-images {
