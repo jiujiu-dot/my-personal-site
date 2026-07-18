@@ -3,7 +3,17 @@ const updateScrollY = () => {
 };
 
 const swapBottomImage = (imageName) => {
-  document.querySelectorAll('.bottom-image').forEach((image) => {
+  const bottomImages = document.querySelectorAll('.bottom-image');
+
+  if (imageName === 'layout1.png') {
+    bottomImages.forEach((image) => {
+      image.classList.remove('is-hidden');
+      image.classList.add('is-active');
+    });
+    return;
+  }
+
+  bottomImages.forEach((image) => {
     const isActive = image.dataset.image === imageName;
     image.classList.toggle('is-hidden', !isActive);
     image.classList.toggle('is-active', isActive);
