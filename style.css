@@ -135,6 +135,31 @@ header {
   display: none;
 }
 
+.bottom-gallery.is-hidden .creeper-walker {
+  display: none;
+}
+
+.creeper-walker {
+  position: fixed;
+  bottom: 1rem;
+  left: -180px;
+  width: 300px;
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+  display: block;
+  animation: creeper-walk 8s linear infinite;
+}
+
+@keyframes creeper-walk {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  100% {
+    transform: translateX(calc(100vw + 220px)) scaleX(1);
+  }
+}
+
 .bottom-image {
   position: absolute;
   left: 50%;
