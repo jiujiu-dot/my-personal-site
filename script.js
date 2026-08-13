@@ -5,7 +5,7 @@ const updateScrollY = () => {
 const updateButtonsVisibility = (imageName) => {
   const buttons = document.querySelectorAll('.layout-button');
   buttons.forEach((btn) => {
-    const matches = btn.dataset.forImage === imageName;
+    const matches = imageName === 'layout2.png' && btn.dataset.forImage === imageName;
     btn.classList.toggle('is-hidden', !matches);
     if (!matches) {
       btn.style.left = '';
@@ -45,11 +45,13 @@ const positionButtons = (imageName) => {
 const artIndexMap = {};
 
 const showArtForLayout = (imageName, index) => {
-  const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
-  arts.forEach((art) => {
+  document.querySelectorAll('.layout-art').forEach((art) => {
+    const artLayout = art.dataset.forImage;
     const artIndex = Number(art.dataset.index || 0);
-    const match = artIndex === index;
+    const match = imageName === 'layout2.png' && artLayout === imageName && artIndex === index;
+
     art.classList.toggle('is-hidden', !match);
+
     if (match) {
       art.style.left = '';
       art.style.top = '';
@@ -79,12 +81,19 @@ const positionArts = (imageName) => {
 };
 
 const initArtForLayout = (imageName) => {
+  if (imageName !== 'layout2.png') {
+    document.querySelectorAll('.layout-art').forEach((art) => art.classList.add('is-hidden'));
+    return;
+  }
+
   artIndexMap[imageName] = 1;
   showArtForLayout(imageName, 1);
   setTimeout(() => positionArts(imageName), 50);
 };
 
 const advanceArtForLayout = (imageName, delta) => {
+  if (imageName !== 'layout2.png') return;
+
   const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
   if (!arts || arts.length === 0) return;
   const count = arts.length;
@@ -97,30 +106,24 @@ const advanceArtForLayout = (imageName, delta) => {
 
 const swapBottomImage = (imageName) => {
   const bottomImages = document.querySelectorAll('.bottom-image');
-
-  if (imageName === 'layout1.png') {
-    bottomImages.forEach((image) => {
-      image.classList.remove('is-hidden');
-      image.classList.add('is-active');
-    });
-    updateButtonsVisibility(imageName);
-    setTimeout(() => {
-      positionButtons(imageName);
-      initArtForLayout(imageName);
-    }, 50);
-    return;
-  }
-
   bottomImages.forEach((image) => {
-    const isActive = image.dataset.image === imageName;
+    const isLayoutImage = image.dataset.image === imageName;
+    const isLayoutOneMusic = imageName === 'layout1.png' && ['MUSIC1.png', 'MUSICBOX1.png'].includes(image.dataset.image || '');
+    const isActive = isLayoutImage || isLayoutOneMusic;
     image.classList.toggle('is-hidden', !isActive);
     image.classList.toggle('is-active', isActive);
   });
 
+  document.querySelectorAll('.layout-art').forEach((art) => {
+    art.classList.add('is-hidden');
+  });
+
   updateButtonsVisibility(imageName);
   setTimeout(() => {
-    positionButtons(imageName);
-    initArtForLayout(imageName);
+    if (imageName === 'layout2.png') {
+      positionButtons(imageName);
+      initArtForLayout(imageName);
+    }
   }, 50);
 };
 
