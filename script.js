@@ -4,11 +4,16 @@ const updateScrollY = () => {
 
 const swapBottomImage = (imageName) => {
   const bottomImages = document.querySelectorAll('.bottom-image');
+  const bottomButtons = document.querySelectorAll('.bottom-button');
 
   if (imageName === 'layout1.png') {
     bottomImages.forEach((image) => {
       image.classList.remove('is-hidden');
       image.classList.add('is-active');
+    });
+    bottomButtons.forEach((btn) => {
+      btn.classList.remove('is-hidden');
+      btn.classList.add('is-active');
     });
     return;
   }
@@ -17,6 +22,13 @@ const swapBottomImage = (imageName) => {
     const isActive = image.dataset.image === imageName;
     image.classList.toggle('is-hidden', !isActive);
     image.classList.toggle('is-active', isActive);
+  });
+
+  bottomButtons.forEach((btn) => {
+    const targets = (btn.dataset.for || '').split(' ').filter(Boolean);
+    const isActive = targets.includes(imageName);
+    btn.classList.toggle('is-hidden', !isActive);
+    btn.classList.toggle('is-active', isActive);
   });
 };
 
