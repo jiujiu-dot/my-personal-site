@@ -33,7 +33,7 @@ const positionButtons = (imageName) => {
     let left = layoutRect.left - galleryRect.left + layoutRect.width * frac;
     
     if (index === 0) left += 230; // left button
-    if (index === 1) left -= 95;  // right button
+    if (index === 1) left -= 125;  // right button
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     btn.style.left = `${left}px`;
     btn.style.top = `${top}px`;
