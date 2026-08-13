@@ -41,6 +41,60 @@ const positionButtons = (imageName) => {
   });
 };
 
+// Art overlay management
+const artIndexMap = {};
+
+const showArtForLayout = (imageName, index) => {
+  const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
+  arts.forEach((art) => {
+    const artIndex = Number(art.dataset.index || 0);
+    const match = artIndex === index;
+    art.classList.toggle('is-hidden', !match);
+    if (match) {
+      art.style.left = '';
+      art.style.top = '';
+      art.style.width = '';
+      art.style.height = '';
+    }
+  });
+};
+
+const positionArts = (imageName) => {
+  const gallery = document.querySelector('.bottom-gallery');
+  const layoutImage = document.querySelector(`.bottom-image[data-image="${imageName}"]`);
+  if (!gallery || !layoutImage) return;
+  const galleryRect = gallery.getBoundingClientRect();
+  const layoutRect = layoutImage.getBoundingClientRect();
+  const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
+  arts.forEach((art) => {
+    const artWidth = Math.max(40, layoutRect.width * 0.6 + 0); // keep CSS 60% but allow JS sizing
+    art.style.width = `${artWidth}px`;
+    art.style.height = 'auto';
+    const left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5;
+    const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
+    art.style.left = `${left}px`;
+    art.style.top = `${top}px`;
+    art.style.transform = 'translate(-50%, -50%)';
+  });
+};
+
+const initArtForLayout = (imageName) => {
+  artIndexMap[imageName] = 1;
+  showArtForLayout(imageName, 1);
+  setTimeout(() => positionArts(imageName), 50);
+};
+
+const advanceArtForLayout = (imageName, delta) => {
+  const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
+  if (!arts || arts.length === 0) return;
+  const count = arts.length;
+  const current = artIndexMap[imageName] || 1;
+  let next = ((current - 1 + delta) % count + count) % count + 1;
+  artIndexMap[imageName] = next;
+  showArtForLayout(imageName, next);
+  positionArts(imageName);
+};
+
 const swapBottomImage = (imageName) => {
   const bottomImages = document.querySelectorAll('.bottom-image');
 
@@ -50,7 +104,10 @@ const swapBottomImage = (imageName) => {
       image.classList.add('is-active');
     });
     updateButtonsVisibility(imageName);
-    setTimeout(() => positionButtons(imageName), 50);
+    setTimeout(() => {
+      positionButtons(imageName);
+      initArtForLayout(imageName);
+    }, 50);
     return;
   }
 
@@ -61,7 +118,10 @@ const swapBottomImage = (imageName) => {
   });
 
   updateButtonsVisibility(imageName);
-  setTimeout(() => positionButtons(imageName), 50);
+  setTimeout(() => {
+    positionButtons(imageName);
+    initArtForLayout(imageName);
+  }, 50);
 };
 
 document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
@@ -72,6 +132,18 @@ document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
     swapBottomImage(tile.dataset.targetImage);
     gallery?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+});
+
+// Wire layout buttons to cycle art: button2 -> next, button1 -> previous
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.layout-button');
+  if (!btn) return;
+  const imageName = btn.dataset.forImage;
+  if (!imageName) return;
+  const src = (btn.getAttribute('src') || '').toLowerCase();
+  const isNext = src.includes('button2') || (btn.alt || '').includes('2');
+  if (isNext) advanceArtForLayout(imageName, 1);
+  else advanceArtForLayout(imageName, -1);
 });
 
 const musicImage = document.querySelector('.music-image');
@@ -188,6 +260,7 @@ window.addEventListener('resize', () => {
   const active = document.querySelector('.bottom-image:not(.is-hidden)');
   const imageName = active?.dataset?.image;
   if (imageName) positionButtons(imageName);
+  if (imageName) positionArts(imageName);
 });
 
 window.addEventListener('scroll', updateScrollY, { passive: true });
