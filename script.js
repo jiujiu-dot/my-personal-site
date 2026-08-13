@@ -27,7 +27,7 @@ const positionButtons = (imageName) => {
 
   buttons.forEach((btn, index) => {
     const frac = index === 0 ? 0.28 : 0.72;
-    const btnWidth = Math.max(40, layoutRect.width * 0.16);
+    const btnWidth = Math.max(40, layoutRect.width * 0.16 + 500);
     btn.style.width = `${btnWidth}px`;
     btn.style.height = 'auto';
     const left = layoutRect.left - galleryRect.left + layoutRect.width * frac;
