@@ -27,13 +27,13 @@ const positionButtons = (imageName) => {
 
   buttons.forEach((btn, index) => {
     const frac = index === 0 ? 0.28 : 0.72;
-    const btnWidth = Math.max(40, layoutRect.width * 0.16 + 600); 
+    const btnWidth = Math.max(40, layoutRect.width * 0.16 + 700); 
     btn.style.width = `${btnWidth}px`;
     btn.style.height = 'auto';
     let left = layoutRect.left - galleryRect.left + layoutRect.width * frac;
     
-    if (index === 0) left += 230; // left button
-    if (index === 1) left -= 125;  // right button
+    if (index === 0) left += 215; // left button
+    if (index === 1) left -= 164;  // right button
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     btn.style.left = `${left}px`;
     btn.style.top = `${top}px`;
