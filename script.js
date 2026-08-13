@@ -67,10 +67,11 @@ const positionArts = (imageName) => {
   const layoutRect = layoutImage.getBoundingClientRect();
   const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
   arts.forEach((art) => {
-    const artWidth = Math.max(40, layoutRect.width * 0.6 + 0); // keep CSS 60% but allow JS sizing
+    const artWidth = Math.max(40, layoutRect.width * 0.6 + 500); // increase by 500px per request
     art.style.width = `${artWidth}px`;
     art.style.height = 'auto';
-    const left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5;
+    let left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5;
+    left += 300; // shift all art 300px to the right
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     art.style.left = `${left}px`;
     art.style.top = `${top}px`;
@@ -134,17 +135,50 @@ document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
   });
 });
 
-// Wire layout buttons to cycle art: button2 -> next, button1 -> previous
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.layout-button');
-  if (!btn) return;
-  const imageName = btn.dataset.forImage;
-  if (!imageName) return;
-  const src = (btn.getAttribute('src') || '').toLowerCase();
-  const isNext = src.includes('button2') || (btn.alt || '').includes('2');
-  if (isNext) advanceArtForLayout(imageName, 1);
-  else advanceArtForLayout(imageName, -1);
-});
+// Attach per-button handlers with pixel-alpha hit testing so only clicks on the visible
+// parts of the button images trigger art changes.
+const isPointOpaqueOnImage = (img, clientX, clientY) => {
+  if (!img || !img.complete) return false;
+  const rect = img.getBoundingClientRect();
+  const x = clientX - rect.left;
+  const y = clientY - rect.top;
+  if (x < 0 || y < 0 || x > rect.width || y > rect.height) return false;
+  const nx = Math.floor(x * (img.naturalWidth / rect.width));
+  const ny = Math.floor(y * (img.naturalHeight / rect.height));
+  if (!img.naturalWidth || !img.naturalHeight) return true;
+
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const data = ctx.getImageData(nx, ny, 1, 1).data;
+    return data[3] > 10; // alpha > ~4%
+  } catch (err) {
+    return true; // if cross-origin or other error, fall back to allowing the click
+  }
+};
+
+const attachButtonHandlers = () => {
+  document.querySelectorAll('.layout-button').forEach((btn) => {
+    if (btn.__hasButtonHandler) return;
+    const handler = (e) => {
+      const imageName = btn.dataset.forImage;
+      if (!imageName) return;
+      if (!isPointOpaqueOnImage(btn, e.clientX, e.clientY)) return;
+      e.stopPropagation();
+      const src = (btn.getAttribute('src') || '').toLowerCase();
+      const isNext = src.includes('button2') || (btn.alt || '').includes('2');
+      if (isNext) advanceArtForLayout(imageName, 1);
+      else advanceArtForLayout(imageName, -1);
+    };
+    btn.addEventListener('click', handler);
+    btn.__hasButtonHandler = true;
+  });
+};
+
+attachButtonHandlers();
 
 const musicImage = document.querySelector('.music-image');
 const dropAudio = document.getElementById('drop-audio');
