@@ -163,40 +163,30 @@ header {
   z-index: 1;
 }
 
+/* Layout overlay buttons */
+.layout-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  z-index: 4;
+  pointer-events: auto;
+}
+
+.layout-button.is-hidden {
+  display: none;
+}
+
 .musicbox-image {
   z-index: 2;
 }
 
 .music-image {
   z-index: 3;
-}
-
-/* Overlay buttons that appear on top of layouts */
-.bottom-button {
-  position: absolute;
-  z-index: 6;
-  width: 64px;
-  height: auto;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-}
-
-.bottom-button.left {
-  left: calc(50% - 200px);
-  top: 50%;
-}
-
-.bottom-button.right {
-  left: calc(50% + 200px);
-  top: 50%;
-}
-
-.bottom-button.is-hidden {
-  display: none;
-}
-
-.bottom-button.is-active {
-  display: block;
 }
 
 .frame1 .frame-images {

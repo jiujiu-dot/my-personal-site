@@ -2,19 +2,52 @@ const updateScrollY = () => {
   document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 };
 
+const updateButtonsVisibility = (imageName) => {
+  const buttons = document.querySelectorAll('.layout-button');
+  buttons.forEach((btn) => {
+    const matches = btn.dataset.forImage === imageName;
+    btn.classList.toggle('is-hidden', !matches);
+    if (!matches) {
+      btn.style.left = '';
+      btn.style.top = '';
+      btn.style.width = '';
+      btn.style.height = '';
+    }
+  });
+};
+
+const positionButtons = (imageName) => {
+  const gallery = document.querySelector('.bottom-gallery');
+  const layoutImage = document.querySelector(`.bottom-image[data-image="${imageName}"]`);
+  if (!gallery || !layoutImage) return;
+
+  const galleryRect = gallery.getBoundingClientRect();
+  const layoutRect = layoutImage.getBoundingClientRect();
+  const buttons = document.querySelectorAll(`.layout-button[data-for-image="${imageName}"]`);
+
+  buttons.forEach((btn, index) => {
+    const frac = index === 0 ? 0.28 : 0.72;
+    const btnWidth = Math.max(40, layoutRect.width * 0.16);
+    btn.style.width = `${btnWidth}px`;
+    btn.style.height = 'auto';
+    const left = layoutRect.left - galleryRect.left + layoutRect.width * frac;
+    const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
+    btn.style.left = `${left}px`;
+    btn.style.top = `${top}px`;
+    btn.style.transform = 'translate(-50%, -50%)';
+  });
+};
+
 const swapBottomImage = (imageName) => {
   const bottomImages = document.querySelectorAll('.bottom-image');
-  const bottomButtons = document.querySelectorAll('.bottom-button');
 
   if (imageName === 'layout1.png') {
     bottomImages.forEach((image) => {
       image.classList.remove('is-hidden');
       image.classList.add('is-active');
     });
-    bottomButtons.forEach((btn) => {
-      btn.classList.remove('is-hidden');
-      btn.classList.add('is-active');
-    });
+    updateButtonsVisibility(imageName);
+    setTimeout(() => positionButtons(imageName), 50);
     return;
   }
 
@@ -24,12 +57,8 @@ const swapBottomImage = (imageName) => {
     image.classList.toggle('is-active', isActive);
   });
 
-  bottomButtons.forEach((btn) => {
-    const targets = (btn.dataset.for || '').split(' ').filter(Boolean);
-    const isActive = targets.includes(imageName);
-    btn.classList.toggle('is-hidden', !isActive);
-    btn.classList.toggle('is-active', isActive);
-  });
+  updateButtonsVisibility(imageName);
+  setTimeout(() => positionButtons(imageName), 50);
 };
 
 document.querySelectorAll('.frame-extra[data-target-image]').forEach((tile) => {
@@ -151,6 +180,12 @@ if (musicImage) {
     document.body.style.userSelect = '';
   });
 }
+
+window.addEventListener('resize', () => {
+  const active = document.querySelector('.bottom-image:not(.is-hidden)');
+  const imageName = active?.dataset?.image;
+  if (imageName) positionButtons(imageName);
+});
 
 window.addEventListener('scroll', updateScrollY, { passive: true });
 updateScrollY();
