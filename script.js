@@ -67,11 +67,10 @@ const positionArts = (imageName) => {
   const layoutRect = layoutImage.getBoundingClientRect();
   const arts = document.querySelectorAll(`.layout-art[data-for-image="${imageName}"]`);
   arts.forEach((art) => {
-    const artWidth = Math.max(40, layoutRect.width * 0.6 + 500); // increase by 500px per request
+    const artWidth = Math.max(40, layoutRect.width * 0.6 + 400); // increase art size by 400px per request
     art.style.width = `${artWidth}px`;
     art.style.height = 'auto';
-    let left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5;
-    left += 300; // shift all art 300px to the right
+    const left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5 - 9; // shift art 10px left
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     art.style.left = `${left}px`;
     art.style.top = `${top}px`;

@@ -195,7 +195,6 @@ header {
   pointer-events: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 300ms ease-in-out;
 }
 
 .layout-art.is-hidden {
