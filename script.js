@@ -163,21 +163,31 @@ const isPointOpaqueOnImage = (img, clientX, clientY) => {
 };
 
 const attachButtonHandlers = () => {
-  document.querySelectorAll('.layout-button').forEach((btn) => {
-    if (btn.__hasButtonHandler) return;
-    const handler = (e) => {
+  const gallery = document.querySelector('.bottom-gallery');
+  if (!gallery || gallery.__hasGalleryClickHandler) return;
+
+  gallery.addEventListener('click', (e) => {
+    // Check all buttons to see if any of them have an opaque pixel at this click location
+    const buttons = document.querySelectorAll('.layout-button:not(.is-hidden)');
+    let handled = false;
+
+    for (const btn of buttons) {
+      if (!isPointOpaqueOnImage(btn, e.clientX, e.clientY)) continue;
+
       const imageName = btn.dataset.forImage;
-      if (!imageName) return;
-      if (!isPointOpaqueOnImage(btn, e.clientX, e.clientY)) return;
+      if (!imageName) continue;
+
       e.stopPropagation();
       const src = (btn.getAttribute('src') || '').toLowerCase();
       const isNext = src.includes('button2') || (btn.alt || '').includes('2');
       if (isNext) advanceArtForLayout(imageName, 1);
       else advanceArtForLayout(imageName, -1);
-    };
-    btn.addEventListener('click', handler);
-    btn.__hasButtonHandler = true;
+      handled = true;
+      break;
+    }
   });
+
+  gallery.__hasGalleryClickHandler = true;
 };
 
 attachButtonHandlers();
