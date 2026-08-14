@@ -79,7 +79,7 @@ header {
 }
 
 .info-bar-image {
-  position: absolute;
+  position: fixed;
   top: -49.5px;
   right: 0.5rem;
   width: 400px;
