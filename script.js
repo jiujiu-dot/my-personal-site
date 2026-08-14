@@ -32,8 +32,8 @@ const positionButtons = (imageName) => {
     btn.style.height = 'auto';
     let left = layoutRect.left - galleryRect.left + layoutRect.width * frac;
     
-    if (index === 0) left += 215; // left button
-    if (index === 1) left -= 164;  // right button
+    if (index === 0) left += 267; // left button
+    if (index === 1) left -= 131;  // right button
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     btn.style.left = `${left}px`;
     btn.style.top = `${top}px`;
@@ -72,7 +72,7 @@ const positionArts = (imageName) => {
     const artWidth = Math.max(40, layoutRect.width * 0.6 + 400); // increase art size by 400px per request
     art.style.width = `${artWidth}px`; 
     art.style.height = 'auto';
-    const left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5 - 9; // shift art 10px left
+    const left = layoutRect.left - galleryRect.left + layoutRect.width * 0.5 + 12; // shift art 10px left
     const top = layoutRect.top - galleryRect.top + layoutRect.height * 0.5;
     art.style.left = `${left}px`;
     art.style.top = `${top}px`;

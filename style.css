@@ -179,7 +179,7 @@ header {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(calc(-50% + 30px), -50%) scale(1.21);
+  transform: translate(calc(-50% + 60px), -50%) scale(1.21);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -198,7 +198,7 @@ header {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(calc(-50% + 30px), -50%) scale(1.21);
+  transform: translate(calc(-50% + 60px), -50%) scale(1.21);
   width: auto;
   height: auto;
   object-fit: contain;
