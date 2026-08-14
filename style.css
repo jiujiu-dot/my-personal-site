@@ -62,7 +62,7 @@ main {
   top: 50%;
   transform: translateX(-50%) translateY(calc(265px + 30px));
   z-index: 1;
-  width: 100px;
+  width: 400px;
   height: auto;
   pointer-events: none;
 }
