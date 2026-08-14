@@ -62,7 +62,7 @@ main {
   top: 50%;
   transform: translateX(-50%) translateY(calc(265px + 30px));
   z-index: 1;
-  width: 400px;
+  width: 300px;
   height: auto;
   pointer-events: none;
 }
@@ -151,7 +151,7 @@ header {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(92vw, 950px);
+  width: min(92vw, 1150px);
   height: auto;
   display: block;
   object-fit: contain;
@@ -179,13 +179,14 @@ header {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(-50% + 30px), -50%) scale(1.21);
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
   z-index: 4;
   pointer-events: auto;
+  transform-origin: center;
 }
 
 .layout-button.is-hidden {
@@ -197,8 +198,8 @@ header {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
+  transform: translate(calc(-50% + 30px), -50%) scale(1.21);
+  width: auto;
   height: auto;
   object-fit: contain;
   display: block;
@@ -206,6 +207,7 @@ header {
   pointer-events: none;
   opacity: 1;
   visibility: visible;
+  transform-origin: center;
 }
 
 .layout-art.is-hidden {
