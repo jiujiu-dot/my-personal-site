@@ -37,6 +37,11 @@ my-personal-site/
 
 In active development. Currently doing a final bug pass, adding personal touches, and polishing details before calling it shipped.
 
+## A.i use
+
+I used Claude.ai to help create the basic structure of the website and to implement the scrolling functionality. I then used GitHub Copilot in Visual Studio Code to help with positioning, alignment, and the overall layout of the website.
+
+
 ## Acknowledgments
 
 Built as part of [Hack Club's Stardance](https://hackclub.com/) program.
