@@ -56,6 +56,17 @@ main {
   pointer-events: none;
 }
 
+.scroll-down-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(calc(265px + 30px));
+  z-index: 1;
+  width: 100px;
+  height: auto;
+  pointer-events: none;
+}
+
 header {
   position: absolute;
   top: 0;
