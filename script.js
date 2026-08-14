@@ -198,7 +198,7 @@ let dragState = null;
 let audioReady = false;
 
 if (dropAudio) {
-  dropAudio.src = 'Mitski%20-%20Washing%20Machine%20Heart%20%5B1%5D.mp3';
+  dropAudio.src = 'Mitski - Washing Machine Heart [1].mp3';
   dropAudio.load();
   dropAudio.addEventListener('canplaythrough', () => {
     audioReady = true;
@@ -227,6 +227,7 @@ const playDropAudio = () => {
     if (dropAudio.currentTime >= endTime) {
       dropAudio.pause();
       dropAudio.currentTime = startTime;
+      dropAudio.removeEventListener('timeupdate', stopAtEnd);
       resetMusicImagePosition();
     }
   };
@@ -234,16 +235,23 @@ const playDropAudio = () => {
   if (!audioReady && dropAudio.readyState < 2) {
     dropAudio.addEventListener('canplaythrough', () => {
       dropAudio.currentTime = startTime;
-      dropAudio.play().catch(() => {});
+      dropAudio.play().catch((err) => {
+        console.error('Audio playback failed:', err);
+      });
       dropAudio.addEventListener('timeupdate', stopAtEnd, { once: false });
     }, { once: true });
     return;
   }
 
   dropAudio.currentTime = startTime;
-  dropAudio.play().catch(() => {
+  dropAudio.play().catch((err) => {
+    console.error('Audio playback failed:', err);
     dropAudio.load();
-    setTimeout(() => dropAudio.play().catch(() => {}), 150);
+    setTimeout(() => {
+      dropAudio.play().catch((err2) => {
+        console.error('Audio playback retry failed:', err2);
+      });
+    }, 150);
   });
   dropAudio.addEventListener('timeupdate', stopAtEnd, { once: false });
 };
